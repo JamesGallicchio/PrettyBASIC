@@ -13,6 +13,9 @@ case class Sub(a: IntExpr, b: IntExpr) extends IntExpr(s"($a)-($b)")
 case class Mult(a: IntExpr, b: IntExpr) extends IntExpr(s"($a)*($b)")
 case class Div(a: IntExpr, b: IntExpr) extends IntExpr(s"($a)/($b)")
 
+case class IntConst(n: Int) extends IntExpr(n.toString)
+
+
 
 trait Conditional extends Expression
 
