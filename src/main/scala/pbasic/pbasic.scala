@@ -9,6 +9,8 @@ abstract class BNode(basic: => String) {
 
 trait Statement extends BNode
 
-case class Block(lines: Seq[Statement]) extends Expression(lines.mkString("\n"))
+case class Block(lines: Seq[Statement]) extends BNode(lines.mkString("\n"))
 
 case class Ident(name: String) extends BNode(name)
+
+case class Comment(text: String) extends BNode('\'' + text)
