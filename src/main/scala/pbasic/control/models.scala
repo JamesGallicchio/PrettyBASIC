@@ -69,11 +69,3 @@ case class GoTo(ident: Ident)
 
 case object Return
   extends Statement("RETURN")
-
-case class Sub(ident: Ident, block: Block)
-  extends Statement(
-    s"""
-       |$ident:
-       |$block
-       |$Return
-   """.stripMargin)
