@@ -1,12 +1,15 @@
-package memory
+package pbasic.memory
 
-import pbasic.expr.{Expression, IntExpr}
+import pbasic.expr.IntExpr
+import pbasic.{BNode, Ident, Statement}
 
-sealed trait VarSize extends Expression {
-  case class BIT extends VarSize("Bit")
-  case class NIB extends VarSize("Nib")
-  case class BYTE extends VarSize("Byte")
-  case class WORD extends VarSize("Word")
+sealed abstract case class VarSize(basic: String) extends BNode
+
+object VarSize {
+  case object BIT extends VarSize("Bit")
+  case object NIB extends VarSize("Nib")
+  case object BYTE extends VarSize("Byte")
+  case object WORD extends VarSize("Word")
 }
 
 case class VarDecl(id: Ident, size: VarSize) extends Statement(s"$id VAR $size")

@@ -1,16 +1,15 @@
 package pbasic
 
-import pbasic.expr.Expression
-
-abstract class BNode(basic: => String) {
+trait BNode {
+  def basic: String
   def toBasic: String = basic
   override def toString: String = basic
 }
 
-trait Statement extends BNode
+abstract case class Statement(basic: String) extends BNode
 
-case class Block(lines: Seq[Statement]) extends BNode(lines.mkString("\n"))
+case class Block(lines: Seq[Statement]) extends BNode { val basic: String = lines.mkString("\n") }
 
-case class Ident(name: String) extends BNode(name)
+case class Ident(basic: String) extends BNode
 
-case class Comment(text: String) extends BNode('\'' + text)
+case class Comment(text: String) extends BNode { val basic: String = '\'' + text }

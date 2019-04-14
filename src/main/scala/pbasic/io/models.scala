@@ -3,7 +3,7 @@ package pbasic.io
 import pbasic.expr.IntExpr
 import pbasic.{BNode, Statement}
 
-case class Pin private (int: Int) extends BNode(s"PIN_$int")
+case class Pin private (int: Int) extends BNode { val basic = s"PIN_$int" }
 
 object Pin {
   val _0 = Pin(0)
