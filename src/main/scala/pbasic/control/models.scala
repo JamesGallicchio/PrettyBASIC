@@ -13,7 +13,7 @@ case class If(cond: Conditional, body: Block)(els: ?[ElseStatement] = None)
        |ENDIF
     """.stripMargin)
 
-sealed abstract case class ElseStatement(basic: String) extends BNode
+sealed abstract class ElseStatement(val basic: String) extends BNode
 
 case class ElseIf(cond: Conditional, body: Block)(els: ?[ElseStatement])
   extends ElseStatement(s"ELSEIF ($cond) THEN\n$body")

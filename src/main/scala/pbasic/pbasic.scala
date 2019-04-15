@@ -6,7 +6,7 @@ trait BNode {
   override def toString: String = basic
 }
 
-abstract case class Statement(basic: String) extends BNode
+abstract class Statement(val basic: String) extends BNode
 
 case class Block(lines: Seq[Statement]) extends BNode { val basic: String = lines.mkString("\n") }
 

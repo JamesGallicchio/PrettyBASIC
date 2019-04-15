@@ -3,7 +3,7 @@ package pbasic.memory
 import pbasic.expr.IntExpr
 import pbasic.{BNode, Ident, Statement}
 
-sealed abstract case class VarSize(basic: String) extends BNode
+sealed abstract class VarSize(val basic: String) extends BNode
 
 object VarSize {
   case object BIT extends VarSize("Bit")
